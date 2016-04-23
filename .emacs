@@ -87,6 +87,5 @@
 ;;(load "/home/zlaine/llvm-3.5.0.src/tools/clang/tools/clang-format/clang-format.el")
 ;;(require clang-format.el)
 
-(load "/usr/share/emacs/site-lisp/clang-format-3.4/clang-format.el")
-(global-set-key [C-tab] 'clang-format-region)
-
+;(load "/usr/share/emacs/site-lisp/clang-format-3.4/clang-format.el")
+;(global-set-key [C-tab] 'clang-format-region)
