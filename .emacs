@@ -84,8 +84,7 @@
 
 (add-hook 'c++-mode-hook 'my-c++-mode-hook)
 
-;;(load "/home/zlaine/llvm-3.5.0.src/tools/clang/tools/clang-format/clang-format.el")
-;;(require clang-format.el)
-
-;(load "/usr/share/emacs/site-lisp/clang-format-3.4/clang-format.el")
-;(global-set-key [C-tab] 'clang-format-region)
+;; Drop clang-format.el into ~, and turn on the line below, or do:
+;; M-x package-install clang-format.
+;;(load "clang-format.el")
+(global-set-key [tab] 'clang-format-region)
