@@ -57,34 +57,34 @@
 
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
-(defun my-c++-unindent-dangling-< (langlem)
-  (save-excursion
-    (beginning-of-line)
-    (c-forward-token-2 0 nil (c-point 'eol))
-    (if (eq (char-after) ?>)
-        (if (eq (car langlem) 'topmost-intro-cont)
-            (- c-basic-offset)
-          0))))
-
-(defun my-c++-mode-hook ()
-  ;; customizations specific to C++ mode
-  (c-add-style "my-c++" '("stroustrup"
-                          (c-offsets-alist . ((template-args-cont
-                                               . (my-c++-unindent-dangling-<
-                                                  c-lineup-template-args
-                                                  +))
-                                              (topmost-intro-cont
-                                               . my-c++-unindent-dangling-<)
-                                              (innamespace . +)
-                                              (substatement-open . 0)
-                                              (arglist-close . c-lineup-close-paren)
-                                              )
-                                           )
-                          (c-block-comment-prefix . "")) t))
-
-(add-hook 'c++-mode-hook 'my-c++-mode-hook)
+;;(defun my-c++-unindent-dangling-< (langlem)
+;;  (save-excursion
+;;    (beginning-of-line)
+;;    (c-forward-token-2 0 nil (c-point 'eol))
+;;    (if (eq (char-after) ?>)
+;;        (if (eq (car langlem) 'topmost-intro-cont)
+;;            (- c-basic-offset)
+;;          0))))
+;;
+;;(defun my-c++-mode-hook ()
+;;  ;; customizations specific to C++ mode
+;;  (c-add-style "my-c++" '("stroustrup"
+;;                          (c-offsets-alist . ((template-args-cont
+;;                                               . (my-c++-unindent-dangling-<
+;;                                                  c-lineup-template-args
+;;                                                  +))
+;;                                              (topmost-intro-cont
+;;                                               . my-c++-unindent-dangling-<)
+;;                                              (innamespace . +)
+;;                                              (substatement-open . 0)
+;;                                              (arglist-close . c-lineup-close-paren)
+;;                                              )
+;;                                           )
+;;                          (c-block-comment-prefix . "")) t))
 
 ;; Drop clang-format.el into ~, and turn on the line below, or do:
 ;; M-x package-install clang-format.
-;;(load "clang-format.el")
-(global-set-key [tab] 'clang-format-region)
+;;(load "~/clang-format.el")
+
+(add-hook 'c++-mode-hook
+          (lambda () (local-set-key (kbd "TAB") 'clang-format-region)))
