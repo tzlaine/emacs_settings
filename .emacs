@@ -50,10 +50,10 @@
  '(gdb-arrow-face ((t (:background "red3"))) t)
  '(hyper-apropos-hyperlink ((t (:foreground "cyan"))))
  '(isearch ((t (:foreground "white" :background "grey40"))))
- '(mode-line ((t (:background "grey80"))))
+ '(mode-line ((t (:background "grey20"))))
  '(paren-match ((t (:foreground "white" :background "grey80"))) t)
  '(text-cursor ((t (:foreground "black" :background "yellow"))) t)
- '(toolbar ((t (:background "grey80"))) t))
+ '(toolbar ((t (:background "grey20"))) t))
 
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
