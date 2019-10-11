@@ -10,7 +10,7 @@
  '(c-default-style (quote ((c++-mode . ""))))
  '(c-doc-comment-style (quote set-from-style))
  '(column-number-mode t)
- '(compile-command "sconsi -j40 -u")
+ '(compile-command "cd ~/FOO/build && make -j8")
  '(default-toolbar-position (quote top))
  '(delete-selection-mode t)
  '(display-time-display-time-background "grey80")
