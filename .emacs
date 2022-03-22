@@ -4,13 +4,14 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  '(bell-volume 0)
+ '(visible-bell 1)
  '(browse-url-browser-function (quote browse-url-mozilla))
  '(c++-tab-always-indent nil)
  '(c-basic-offset 4)
  '(c-default-style (quote ((c++-mode . ""))))
  '(c-doc-comment-style (quote set-from-style))
  '(column-number-mode t)
- '(compile-command "cd ~/FOO/build && make -j8")
+ '(compile-command "cd ~/text/build && make -j12")
  '(default-toolbar-position (quote top))
  '(delete-selection-mode t)
  '(display-time-display-time-background "grey80")
@@ -20,7 +21,7 @@
  '(font-lock-auto-fontify t)
  '(font-lock-maximum-decoration t)
  '(font-lock-mode t t (font-lock))
- '(grep-find-command "find . -type f -print0 | xargs -0 -e grep -n  | grep -v '\\.svn\\|Binary\\|~\\|\\.nm\\|include/\\|build/\\|\\.patch\\|diffs'")
+ '(grep-find-command "find . -type f -print0 | xargs -0 -e grep -n  | grep -v '\\.git\\|Binary\\|~\\|\\.nm\\|include/\\|build/\\|\\.patch\\|diffs'")
  '(indent-tabs-mode nil)
  '(query-user-mail-address nil)
  '(scroll-bar-mode (quote right))
@@ -84,7 +85,21 @@
 
 ;; Drop clang-format.el into ~, and turn on the line below, or do:
 ;; M-x package-install clang-format.
-;;(load "~/clang-format.el")
+(load "~/clang-format.el")
 
 (add-hook 'c++-mode-hook
           (lambda () (local-set-key (kbd "TAB") 'clang-format-region)))
+
+;; https://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emacs-compilation-buffer/63710493#63710493
+;; Requires M-x package-install with xterm-color.
+;;(require 'xterm-color)
+;;(setq compilation-environment '("TERM=xterm-256color"))
+;;(defun my/advice-compilation-filter (f proc string)
+;;  (funcall f proc (xterm-color-filter string)))
+;;(advice-add 'compilation-filter :around #'my/advice-compilation-filter)
+
+(when (require 'ansi-color nil t)
+  (defun my-colorize-compilation-buffer ()
+    (when (eq major-mode 'compilation-mode)
+      (ansi-color-apply-on-region compilation-filter-start (point-max))))
+  (add-hook 'compilation-filter-hook 'my-colorize-compilation-buffer))
