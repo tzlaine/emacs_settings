@@ -21,7 +21,7 @@
  '(font-lock-auto-fontify t)
  '(font-lock-maximum-decoration t)
  '(font-lock-mode t t (font-lock))
- '(grep-find-command "find . -type f -print0 | xargs -0 -e grep -n  | grep -v '\\.git\\|Binary\\|~\\|\\.nm\\|include/\\|build/\\|\\.patch\\|diffs'")
+ '(grep-find-command "find . -type f -print0 | xargs -0 -e grep -n  | grep -v '\\.git\\|Binary\\|~\\|\\.nm\\|build/\\|\\.patch\\|diffs'")
  '(indent-tabs-mode nil)
  '(query-user-mail-address nil)
  '(scroll-bar-mode (quote right))
